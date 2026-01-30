@@ -1,20 +1,17 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './components/Layout';
-import Onboarding from './pages/Onboarding';
+import InvestmentSelection from './pages/InvestmentSelection';
 import Dashboard from './pages/Dashboard';
-import ModuleView from './pages/ModuleView';
-import RiskProfile from './pages/RiskProfile';
 
 function App() {
   return (
     <BrowserRouter>
       <Layout>
         <Routes>
-          <Route path="/" element={<Navigate to="/onboarding" replace />} />
-          <Route path="/onboarding" element={<Onboarding />} />
+          <Route path="/" element={<Navigate to="/dashboard" replace />} />
+          <Route path="/investments" element={<InvestmentSelection />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/learn/:moduleId" element={<ModuleView />} />
-          <Route path="/risk-profile" element={<RiskProfile />} />
+          {/* Dashboard will contain the Newsletter view link */}
         </Routes>
       </Layout>
     </BrowserRouter>

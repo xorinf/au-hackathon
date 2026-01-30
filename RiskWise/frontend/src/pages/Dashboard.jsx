@@ -1,119 +1,138 @@
-import React from 'react';
-import { Play, Award, Flame, ChevronRight, Lock } from 'lucide-react';
-import { modules, userProgress } from '../data/modules';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { fetchRiskAnalysis } from '../services/openai';
+import { getAssetsByIds } from '../data/marketData'; // Helper for rich data
+import InsightCard from '../components/InsightCard';
+import { FileText, RefreshCcw, TrendingUp, AlertTriangle } from 'lucide-react';
+import NewsletterView from './NewsletterView';
+import PopUp from '../components/PopUp';
+import RiskWidget from '../components/RiskWidget';
+import ChatBot from '../components/ChatBot';
+
+import { GROWW_CONFIG } from '../config/groww';
 
 const Dashboard = () => {
-    // Use mock data
-    const nextModuleId = 1; // Logic to determine next module based on progress
-    const nextModule = modules.find(m => m.id === nextModuleId);
+    const [myAssets, setMyAssets] = useState([]);
+    const [insights, setInsights] = useState([]);
+    const [showNewsletter, setShowNewsletter] = useState(false);
+    const [loading, setLoading] = useState(true);
+
+    // Mock Verification of Groww Keys
+    const isGrowwConnected = GROWW_CONFIG.apiKey && GROWW_CONFIG.apiKey.length > 20;
+
+    useEffect(() => {
+        const loadData = async () => {
+            // 1. Load User Selection
+            const storedIds = JSON.parse(localStorage.getItem('userInvestments') || '[]');
+            const assets = getAssetsByIds(storedIds);
+            setMyAssets(assets);
+
+            // 2. Prepare Data for AI (Names only)
+            const assetNames = assets.map(a => a.name);
+
+            // 3. Fetch Risks
+            const aiData = await fetchRiskAnalysis(assetNames.length > 0 ? assetNames : ['General Market']);
+            setInsights(aiData);
+            setLoading(false);
+        };
+
+        loadData();
+    }, []);
+
+    if (showNewsletter) {
+        return <NewsletterView onBack={() => setShowNewsletter(false)} />;
+    }
+
+    // Calculate Portfolio Risk Score (Mock Logic)
+    const riskScore = Math.min(85, 30 + (insights.filter(i => i.type === 'critical').length * 20));
 
     return (
         <div className="fade-in">
-            {/* Header Stats */}
-            <h2 style={{ marginBottom: '24px', fontSize: '1.5rem' }}>
-                Hello, <span className="text-gradient">Future Investor</span> 👋
-            </h2>
+            {/* Widget Row */}
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '24px' }}>
+                <RiskWidget score={riskScore} label={riskScore > 60 ? "High Caution" : "Balanced"} />
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '32px' }}>
-                <div className="glass-card" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    <Award color="var(--warning)" size={32} />
-                    <div>
-                        <div style={{ fontSize: '1.5rem', fontWeight: 700 }}>{userProgress.xp}</div>
-                        <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>XP Earned</div>
-                    </div>
-                </div>
-                <div className="glass-card" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    <Flame color="var(--danger)" size={32} />
-                    <div>
-                        <div style={{ fontSize: '1.5rem', fontWeight: 700 }}>{userProgress.streak}</div>
-                        <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Day Streak</div>
-                    </div>
-                </div>
-            </div>
+                <div className="glass-card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
+                    <div style={{ color: 'var(--text-muted)', fontSize: '0.8rem', marginBottom: '8px' }}>PORTFOLIO SOURCE</div>
+                    <div style={{ fontSize: '1.2rem', fontWeight: 600 }}>{myAssets.length} Assets Linked</div>
 
-            {/* Risk Profile Card */}
-            <div className="glass-card" style={{
-                marginBottom: '32px',
-                background: 'linear-gradient(135deg, rgba(255, 0, 85, 0.1), rgba(0, 0, 0, 0))',
-                border: '1px solid rgba(255, 0, 85, 0.3)',
-                display: 'flex', justifyContent: 'space-between', alignItems: 'center'
-            }}>
-                <div>
-                    <h3 style={{ fontSize: '1.2rem', marginBottom: '4px' }}>Know Your Risk Profile</h3>
-                    <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Discover your investment personality.</p>
-                </div>
-                <Link to="/risk-profile">
-                    <button className="btn-primary" style={{ padding: '8px 16px', fontSize: '0.9rem' }}>Check Now</button>
-                </Link>
-            </div>
-
-            {/* Continue Learning */}
-            <h3 style={{ marginBottom: '16px' }}>Continue Learning</h3>
-            {nextModule && (
-                <div className="glass-card" style={{
-                    marginBottom: '32px',
-                    background: 'linear-gradient(135deg, rgba(0, 229, 255, 0.1), rgba(112, 0, 255, 0.1))',
-                    border: '1px solid var(--primary-glow)'
-                }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '16px' }}>
-                        <div>
-                            <div style={{ textTransform: 'uppercase', fontSize: '0.75rem', color: 'var(--primary)', fontWeight: 700, marginBottom: '4px' }}>
-                                Module {nextModule.id}
-                            </div>
-                            <h3 style={{ fontSize: '1.3rem', marginBottom: '8px' }}>{nextModule.title}</h3>
-                            <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>{nextModule.desc}</p>
-                        </div>
+                    {isGrowwConnected && (
                         <div style={{
-                            background: 'var(--primary)',
-                            borderRadius: '50%', width: '40px', height: '40px',
-                            display: 'flex', alignItems: 'center', justifyContent: 'center',
-                            boxShadow: 'var(--shadow-glow)'
+                            marginTop: '8px', padding: '4px 8px', background: 'rgba(0, 204, 136, 0.1)',
+                            border: '1px solid rgba(0, 204, 136, 0.2)', borderRadius: '4px',
+                            display: 'flex', alignItems: 'center', gap: '6px', width: 'fit-content'
                         }}>
-                            <Play fill="black" stroke="none" size={16} />
+                            <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#00cc88' }} />
+                            <span style={{ fontSize: '0.75rem', color: '#00cc88', fontWeight: 600 }}>Groww API Connected</span>
                         </div>
-                    </div>
+                    )}
+                </div>
+            </div>
 
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-                        <span>{nextModule.duration}</span>
-                        <span>•</span>
-                        <span>Video + Quiz</span>
-                    </div>
+            <PopUp />
+            <ChatBot />
 
-                    <Link to={`/learn/${nextModule.id}`} style={{ display: 'block' }}>
-                        <button className="btn-primary" style={{ width: '100%', marginTop: '16px' }}>Start Lesson</button>
-                    </Link>
+            {/* WATCHLIST SECTION (Legit Data) */}
+            <div style={{ marginBottom: '32px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+                    <h3 style={{ fontSize: '1.2rem' }}>Your Watchlist</h3>
+                    <Link to="/investments" style={{ color: 'var(--primary)', fontSize: '0.9rem', textDecoration: 'none' }}>Edit</Link>
+                </div>
+
+                {myAssets.length === 0 ? (
+                    <div style={{ padding: '20px', textAlign: 'center', background: 'rgba(255,255,255,0.05)', borderRadius: '12px' }}>
+                        No assets selected. <Link to="/investments" style={{ color: 'var(--primary)' }}>Add Now</Link>
+                    </div>
+                ) : (
+                    <div style={{ display: 'flex', gap: '12px', overflowX: 'auto', paddingBottom: '8px' }}>
+                        {myAssets.map(asset => (
+                            <div key={asset.id} style={{
+                                minWidth: '200px', background: 'rgba(255,255,255,0.05)',
+                                padding: '16px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)'
+                            }}>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
+                                    <span style={{ fontWeight: 700 }}>{asset.symbol}</span>
+                                    <span style={{
+                                        color: asset.change.includes('+') ? 'var(--success)' : (asset.change === 'Open' ? 'white' : 'var(--danger)'),
+                                        fontSize: '0.9rem'
+                                    }}>{asset.change}</span>
+                                </div>
+                                <div style={{ fontSize: '1.4rem', fontWeight: 600 }}>₹{asset.price}</div>
+                                <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '4px' }}>{asset.name}</div>
+                            </div>
+                        ))}
+                    </div>
+                )}
+            </div>
+
+            {/* HEADER */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
+                <div>
+                    <h2 style={{ fontSize: '1.5rem' }}>Risk Analysis</h2>
+                    <p style={{ color: 'var(--text-muted)' }}>AI Insights for YOUR specific assets</p>
+                </div>
+                <button
+                    className="btn-primary"
+                    onClick={() => setShowNewsletter(true)}
+                    style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.9rem' }}
+                >
+                    <FileText size={18} /> Generate Brief
+                </button>
+            </div>
+
+            {/* INSIGHTS */}
+            {loading ? (
+                <div style={{ textAlign: 'center', padding: '60px' }}>
+                    <RefreshCcw className="spin" size={32} color="var(--primary)" />
+                    <p style={{ marginTop: '16px', color: 'var(--text-muted)' }}>Analyzing 100+ market signals...</p>
+                </div>
+            ) : (
+                <div style={{ display: 'grid', gap: '16px' }}>
+                    {insights.map((ins, idx) => (
+                        <InsightCard key={ins.id || idx} insight={ins} />
+                    ))}
                 </div>
             )}
-
-            {/* All Modules */}
-            <h3 style={{ marginBottom: '16px' }}>All Modules</h3>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                {modules.map(m => {
-                    const isLocked = m.id > nextModuleId + 2; // Simulate locking logic
-                    return (
-                        <div key={m.id} className="glass-card" style={{
-                            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                            opacity: isLocked ? 0.5 : 1
-                        }}>
-                            <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
-                                <div style={{
-                                    width: '40px', height: '40px', borderRadius: '8px',
-                                    background: 'rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                    fontSize: '1.2rem', fontWeight: 700, color: 'rgba(255,255,255,0.2)'
-                                }}>
-                                    {m.id}
-                                </div>
-                                <div>
-                                    <div style={{ fontWeight: 600 }}>{m.title}</div>
-                                    <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{m.duration}</div>
-                                </div>
-                            </div>
-                            {isLocked ? <Lock size={20} color="var(--text-muted)" /> : <ChevronRight size={20} color="var(--primary)" />}
-                        </div>
-                    );
-                })}
-            </div>
         </div>
     );
 };
