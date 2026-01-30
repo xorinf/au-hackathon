@@ -1,330 +1,339 @@
 # 📄 Product Requirements Document (PRD)
-## Project: RiskWise
-### Tagline: *Understand Risk Before You Invest*
+## Project: IntelliVest AI
+### Tagline: *Your Investments. Explained. Monitored. Anticipated.*
 
 ---
 
 ## 1. Executive Summary
 
-RiskWise is a digital-first, AI-powered financial literacy platform designed to address a critical gap in India’s retail investment ecosystem: **lack of understanding of investment risk**.
+IntelliVest AI is an AI-powered investment intelligence platform that **understands how a user invests**, continuously **monitors their selected stocks or investment categories**, and **automatically generates personalized insights, risk alerts, and smart newsletters** based on real-time market conditions.
 
-Despite increased access to investment platforms, only **27% of retail investors understand basic investment risks** (SEBI Investor Literacy Survey, 2024). This results in misinformed decisions, financial losses, susceptibility to scams, and long-term distrust in financial markets.
+Unlike traditional investment apps that show only prices and returns, IntelliVest AI focuses on:
+- Understanding **user investment behavior**
+- Explaining **why an investment is risky or safe right now**
+- Proactively informing users about **market situations and upcoming risks**
+- Delivering insights via **automation and AI-generated newsletters**
 
-RiskWise solves this by **educating users about investment risks**, **profiling their risk tolerance**, and **delivering personalized, vernacular, and gamified guidance**, before any investment decision is made.
+The platform is **hostable**, **API-driven**, and designed to integrate with external AI and market data APIs.
 
 ---
 
 ## 2. Problem Statement
 
 ### 2.1 Core Problem
-Retail investors often:
-- Invest without understanding risks
-- Skip risk profiling
-- Follow herd mentality or social media influencers
-- Misinterpret returns, volatility, and safety
 
-### 2.2 Root Causes
+Retail investors:
+- Do not track how their investments behave in changing markets
+- Fail to understand *contextual risk* (macro, sectoral, sentiment-based)
+- React late to market changes
+- Consume scattered, generic financial news
+- Do not know how current events affect *their* investments
 
-| Cause | Description |
-|------|-------------|
-| Low Financial Literacy | Education focuses on awareness, not understanding |
-| Complexity | Financial jargon discourages beginners |
-| Language Barrier | Most platforms are English-centric |
-| Behavioral Biases | Fear and greed dominate decisions |
-| Lack of Personalization | Same advice for all users |
+### 2.2 Why Existing Solutions Fail
 
----
-
-## 3. Goals & Objectives
-
-### 3.1 Business Goals
-- Improve investor risk awareness at scale
-- Build trust in digital financial education
-- Reduce misinformed investment behavior
-
-### 3.2 User Goals
-- Understand “what can go wrong” before investing
-- Know their personal risk tolerance
-- Receive simple and relevant guidance
-- Learn in their preferred language and pace
-
-### 3.3 Success Definition
-A successful user should be able to:
-- Explain investment risks in simple terms
-- Identify their personal risk profile
-- Avoid unsuitable or high-risk investments
+| Issue | Explanation |
+|-----|------------|
+| Static dashboards | Show numbers, not meaning |
+| Generic news | Not personalized |
+| No behavior analysis | Ignores how user invests |
+| Manual monitoring | Users forget or ignore risks |
+| Information overload | Too much data, little clarity |
 
 ---
 
-## 4. Target Users & Personas
+## 3. Product Goals
 
-### 4.1 User Segments
+### 3.1 Primary Goals
+- Understand user investment patterns
+- Explain investment risks dynamically
+- Automate market intelligence delivery
+- Provide actionable, personalized insights
 
-| Segment | Age | Characteristics |
-|--------|-----|----------------|
-| Students | 18–25 | New to finance, high curiosity |
-| Young Professionals | 22–35 | Income but limited time |
-| Retired Individuals | 55+ | Risk-averse, safety-focused |
-| Rural Investors | 18–60 | Vernacular-first, low literacy |
-
----
-
-### 4.2 User Personas
-
-#### Persona 1: Ramesh (Rural Investor)
-- Age: 42  
-- Language: Telugu  
-- Goal: Save for children’s education  
-- Pain Point: Fear of losing money  
-
-#### Persona 2: Ananya (Young Professional)
-- Age: 26  
-- Language: English/Hindi  
-- Goal: Wealth creation  
-- Pain Point: Conflicting online advice  
+### 3.2 Secondary Goals
+- Reduce panic-based decisions
+- Improve long-term investment discipline
+- Build investor confidence through clarity
 
 ---
 
-## 5. Scope
+## 4. Target Users
 
-### 5.1 In-Scope (Phase 1)
-- Investment risk education
-- Risk profiling
-- Personalized guidance
-- Gamification
-- Vernacular & voice support
+### Primary Users
+- Long-term stock investors
+- Mutual fund investors
+- Category-based investors (IT, Banking, Pharma, etc.)
+- Tech-savvy retail investors
 
-### 5.2 Out-of-Scope
-- Live trading or investing
-- Guaranteed return advice
-- Crypto or derivatives
-- Portfolio execution
-
----
-
-## 6. Product Overview
-
-RiskWise is a **mobile-first learning platform** that ensures users:
-1. Learn investment risk fundamentals
-2. Understand their personal risk capacity
-3. Receive contextual and personalized guidance
-4. Build confidence through continuous learning
+### User Characteristics
+- Already investing
+- Wants clarity, not tips
+- Consumes digital content
+- Interested in AI-driven insights
 
 ---
 
-## 7. Functional Requirements
+## 5. Product Scope
 
-### 7.1 User Onboarding
+### In Scope
+- Investment pattern analysis
+- Selected stock/category monitoring
+- Market risk explanation
+- Automation tasks & alerts
+- AI-generated newsletters
+- Hosted web application
 
-**Features**
-- Language selection (mandatory)
-- Age group selection
-- Investment experience level
-- Optional voice-based onboarding
-
-**Acceptance Criteria**
-- Onboarding completed in under 2 minutes
-- No financial data required initially
-
----
-
-### 7.2 Risk Literacy Learning Engine
-
-**Content Structure**
-- Micro-modules (2–3 minutes)
-- Visual + audio explanations
-- Real-life analogies
-
-**Topics Covered**
-- What is investment risk?
-- Risk vs return
-- Types of investment risks
-- Common investor mistakes
-
-**Acceptance Criteria**
-- Each module includes:
-  - Lesson
-  - 3–5 question quiz
-  - Instant feedback
+### Out of Scope (Phase 1)
+- Trade execution
+- Portfolio rebalancing
+- Guaranteed predictions
+- Intraday trading signals
 
 ---
 
-### 7.3 Gamification System
+## 6. High-Level Product Flow
 
-**Mechanics**
-- XP points
-- Badges
-- Learning streaks
-- Progress tracking
-
-**Rewards**
-- Milestone badges
-- Completion certificates
+1. User adds investments or selects categories
+2. Platform analyzes user behavior & patterns
+3. User configures automation tasks
+4. System monitors market & context
+5. AI generates insights, alerts & newsletters
+6. User receives explanations & risk updates
 
 ---
 
-### 7.4 Risk Profiling Engine
-
-**Inputs**
-- Age
-- Income stability
-- Financial goals
-- Emotional tolerance
-
-**Logic**
-- Rule-based + ML hybrid
-- Transparent scoring logic
-
-**Outputs**
-- Risk category (Conservative / Moderate / Aggressive)
-- Plain-language explanation
-- Do’s and Don’ts
+## 7. Core Features & Requirements
 
 ---
 
-### 7.5 Personalized Guidance Dashboard
+## 7.1 User Investment Pattern Analyzer
 
-**Components**
-- Risk profile summary
-- Suitable investment categories
-- Avoidance warnings
-- Scenario simulations (market crash, inflation)
+### Description
+Analyzes **how** the user invests, not just **what** they invest in.
 
-**Acceptance Criteria**
-- Users understand *why* guidance is given
+### Data Considered
+- Asset types (stocks, funds, categories)
+- Holding duration
+- Sector concentration
+- Volatility tolerance
+- Reaction behavior (sell/buy timing)
 
----
-
-### 7.6 Conversational Assistant (Chatbot)
-
-**Capabilities**
-- Answers basic finance questions
-- Explains risks contextually
-- Guides learning path
-
-**Languages**
-- English + Indian regional languages
-
-**Constraints**
-- Educational guidance only
-- No product selling or investment execution
+### Outputs
+- Investment style classification
+  - Conservative
+  - Balanced
+  - Aggressive
+- Concentration risks
+- Overexposure warnings
 
 ---
 
-### 7.7 Accessibility Features
+## 7.2 Investment Watch & Automation Tasks
 
-- Voice narration
-- Large text mode
-- Offline lesson downloads
-- Low-bandwidth support
+### Description
+Users can create **automation tasks** for:
+- Individual stocks
+- Investment categories
+- Entire portfolio
+
+### Example Automation Tasks
+- “Notify me if banking sector risk increases”
+- “Explain if this stock becomes volatile”
+- “Weekly risk summary for my portfolio”
+- “Alert me if macro news affects my holdings”
+
+### Automation Triggers
+- Price volatility
+- Sector movement
+- Market sentiment shift
+- News/macro events
+- Earnings or policy changes
+
+---
+
+## 7.3 Market Context & Risk Intelligence Engine
+
+### Description
+Continuously analyzes market conditions and explains **contextual risk**.
+
+### Risk Dimensions
+- Market-wide risk
+- Sector-specific risk
+- Stock-specific risk
+- Macro-economic risk
+- Sentiment-driven risk
+
+### Output Style
+- Plain language explanations
+- No jargon
+- “Why this matters to you” framing
+
+---
+
+## 7.4 AI Insight Generator
+
+### Description
+Uses AI APIs to convert raw data into **human-readable insights**.
+
+### Capabilities
+- Summarize market situations
+- Explain risk impact on user investments
+- Compare current vs historical patterns
+- Predict potential risk scenarios (non-deterministic)
+
+### Constraints
+- No financial advice
+- No buy/sell commands
+- Explain-only system
+
+---
+
+## 7.5 Smart Newsletter Generator (KEY FEATURE)
+
+### Description
+AI-generated **personalized investment newsletter**, auto-delivered.
+
+### Newsletter Sections
+- Market overview (simplified)
+- Sector-wise movement
+- Impact on user investments
+- Emerging risks
+- What to watch next week
+
+### Personalization Factors
+- User holdings
+- Selected categories
+- Risk tolerance
+- Market exposure
+
+### Delivery Channels
+- Email
+- In-app feed
+- PDF export (future)
+
+---
+
+## 7.6 User Dashboard
+
+### Components
+- Investment overview
+- Active automation tasks
+- Risk alerts timeline
+- Newsletter archive
+- Market sentiment indicators
 
 ---
 
 ## 8. Non-Functional Requirements
 
 | Category | Requirement |
-|--------|------------|
-| Performance | App loads < 3 seconds |
-| Scalability | Support 1M+ users |
-| Security | Encrypted data storage |
-| Reliability | 99.5% uptime |
-| Usability | Beginner-friendly UI |
+|-------|------------|
+| Performance | Insights generated < 5 sec |
+| Scalability | 100k+ users |
+| Availability | 99.5% uptime |
+| Security | Encrypted storage |
+| Extensibility | API-first design |
 
 ---
 
-## 9. User Journey Flow
-
-1. User installs app
-2. Selects preferred language
-3. Learns risk basics
-4. Completes risk profiling
-5. Views personalized guidance
-6. Continues learning via gamified modules
-
----
-
-## 10. Data & Privacy
-
-- No forced KYC
-- Minimal data collection
-- Explicit user consent
-- Data anonymization
-- Compliance with Indian data protection norms
-
----
-
-## 11. Technology Stack
+## 9. Technology Architecture
 
 ### Frontend
-- Flutter / React Native
-- Responsive & multilingual UI
+- Next.js / React
+- Responsive web UI
+- Dashboard-driven UX
 
 ### Backend
-- Node.js / Django
+- Node.js / Python (FastAPI)
+- Task scheduler (cron / queues)
 - REST APIs
 
-### AI & Data
-- NLP-based chatbot
-- Risk scoring engine
-- Learning analytics
+### AI Integration
+- External AI APIs (LLMs)
+- Prompt-based insight generation
+- Summarization pipelines
+
+### Market Data
+- Stock price APIs
+- Sector indices
+- News & macro feeds
 
 ### Infrastructure
-- Cloud-based (AWS / GCP)
-- Secure authentication (OTP)
+- Cloud hosting (AWS/GCP)
+- Dockerized services
+- CI/CD pipeline
+
+---
+
+## 10. Hosting & Deployment
+
+- Self-hosted web app
+- Environment-based configs
+- API key management
+- Scalable worker services for automation
+
+---
+
+## 11. Data & Privacy
+
+- User-controlled data
+- No forced KYC
+- Opt-in automation
+- Clear disclaimers
+- Data isolation per user
 
 ---
 
 ## 12. Metrics & KPIs
 
-| Metric | Target |
-|------|--------|
-| Onboarding Completion | >80% |
-| Lesson Completion Rate | >60% |
-| Risk Profiling Completion | >70% |
-| 30-Day Retention | >40% |
-| Quiz Accuracy Improvement | +30% |
+| Metric | Description |
+|-----|-------------|
+| Active Automations | User engagement |
+| Newsletter Open Rate | Content relevance |
+| Alert Interaction Rate | Insight usefulness |
+| Retention | Platform value |
+| Task Completion | System reliability |
 
 ---
 
 ## 13. Risks & Mitigation
 
 | Risk | Mitigation |
-|-----|-----------|
-| Low engagement | Gamification |
-| Trust issues | Transparency & disclaimers |
-| Language mismatch | Vernacular-first design |
-| Drop-offs | Micro-learning approach |
+|----|------------|
+| Over-dependence on AI | Rule-based validation |
+| Misinterpretation | Clear disclaimers |
+| Data overload | Insight prioritization |
+| Trust issues | Transparency |
 
 ---
 
 ## 14. Future Roadmap
 
 ### Phase 2
-- Paper trading simulator
-- Community learning groups
-- Certification paths
+- Voice-based insights
+- WhatsApp alerts
+- Portfolio simulation
 
 ### Phase 3
 - Broker integrations
-- Voice-only IVR access
-- SEBI-aligned partnerships
+- Community sentiment layer
+- SEBI-aligned reports
 
 ---
 
 ## 15. Assumptions & Constraints
 
 ### Assumptions
-- Users have basic smartphone access
-- Willingness to learn before investing
+- Users want explanations, not tips
+- AI insights increase clarity
 
 ### Constraints
 - Regulatory boundaries
-- Educational-only positioning
+- No predictive guarantees
 
 ---
 
 ## 16. Conclusion
 
-RiskWise aims to transform India’s investment culture by shifting focus from **returns-first** to **risk-aware investing**. Through personalization, simplicity, and accessibility, the platform empowers users to make informed and confident financial decisions.
+IntelliVest AI transforms raw market data into **personalized intelligence**. By understanding user behavior, automating risk monitoring, and delivering AI-generated newsletters, the platform empowers investors to stay informed, calm, and proactive in volatile markets.
 
 ---
