@@ -4,13 +4,13 @@
 
 ## 🚀 Quick Start (5 Steps)
 
-1. **Read the Problem**: 73% of Indians don't understand investment risks
-2. **Check Full Plan**: [docs/plan.md](docs/plan.md) - Your complete playbook
+1. **Read the Problem**: Only 27% of Indians understand investment risks
+2. **Check Full Plan**: [plan.md](./plan.md) - Your complete playbook
 3. **Set Up Project**: Run `./run.sh` from repository root
 4. **Pick Your Role**: Frontend, Backend, Full-Stack, or Designer/Content
 5. **Start Building**: Follow the hour-by-hour timeline
 
-## 📋 What's Inside docs/plan.md
+## 📋 What's Inside plan.md
 
 ### For Researchers (10 mins read)
 - ✅ Market analysis of 4 existing solutions
@@ -137,8 +137,8 @@ By end of day 1, you MUST have:
 
 ## 📞 Resources Quick Links
 
-- **Full Plan**: [docs/plan.md](docs/plan.md)
-- **README**: [README.md](README.md)
+- **Full Plan**: [plan.md](./plan.md)
+- **README**: [../README.md](../README.md)
 - **React Docs**: https://react.dev
 - **Vite Docs**: https://vitejs.dev
 - **Express Docs**: https://expressjs.com
@@ -166,6 +166,6 @@ By end of day 1, you MUST have:
 
 ---
 
-**Ready?** Open [docs/plan.md](docs/plan.md) and start building! 🚀
+**Ready?** Open [plan.md](./plan.md) and start building! 🚀
 
 Good luck! You've got this! 💪

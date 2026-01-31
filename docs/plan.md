@@ -57,7 +57,7 @@
 ### India-Focused Trends & Statistics
 
 📈 **Market Statistics**:
-- **73%** of retail investors don't understand basic investment risks (Our Problem Statement)
+- **27%** of retail investors understand basic investment risks (Our Problem Statement - meaning 73% don't)
 - **40 million+** Demat accounts opened in India (2023-24)
 - **45%** growth in first-time investors YoY
 - **60%** of new investors prefer mobile-first platforms
@@ -438,7 +438,7 @@
 #### **Slide 2: The Problem** (30 seconds)
 **Visual**: Shocking statistic with icon/graphic  
 **Content**:
-- **Headline**: "73% of Indian retail investors don't understand basic investment risks"
+- **Headline**: "Only 27% of Indian retail investors understand basic investment risks"
 - **Bullets**:
   - 40M+ Demat accounts opened, but most lack risk literacy
   - 35% investors face losses due to poor risk understanding
@@ -462,13 +462,14 @@
 #### **Slide 4: Our Solution - RiskWise** (30 seconds)
 **Visual**: Product screenshot/mockup  
 **Content**:
-- **Headline**: "AI-Powered Financial Literacy in Your Language"
+- **Headline**: "Smart Financial Literacy in Your Language"
 - **What We Do**:
   - Interactive learning modules on investment risks
   - Gamified quizzes (earn XP, badges, levels)
   - Personalized risk profiling (Conservative/Moderate/Aggressive)
   - Vernacular support (Hindi, Telugu, Tamil + more)
 - **Outcome**: Confident, informed investors in 15 minutes
+- **Future**: AI-powered recommendations (Phase 3 roadmap)
 
 ---
 

@@ -4,7 +4,7 @@
 [![Hackathon Ready](https://img.shields.io/badge/Hackathon-Ready-brightgreen)](docs/plan.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-RiskWise is a digital-first, AI-powered financial literacy platform designed to address the critical gap in retail investment understanding. **Only 27% of retail investors in India understand basic investment risks** — RiskWise bridges this gap through interactive learning, gamification, and vernacular support.
+RiskWise is a digital-first financial literacy platform designed to address the critical gap in retail investment understanding. **Only 27% of retail investors in India understand basic investment risks** — RiskWise bridges this gap through interactive learning, gamification, and vernacular support.
 
 It helps users learn about investment risks, identify their personal risk tolerance, and receive personalized guidance through a gamified, vernacular-first experience designed specifically for Indian investors.
 
@@ -97,9 +97,10 @@ If you prefer to run it manually:
 ## 📁 Project Structure
 
 ```
-au-hackathon/
+RiskWise/
 ├── docs/
-│   └── plan.md                    # 🎯 Complete hackathon execution plan
+│   ├── plan.md                    # 🎯 Complete hackathon execution plan
+│   └── QUICK_START.md             # ⚡ Quick reference guide
 ├── RiskWise/
 │   ├── frontend/                  # React Application (Vite)
 │   │   ├── src/
