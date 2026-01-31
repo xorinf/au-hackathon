@@ -12,12 +12,17 @@ It helps users learn about investment risks, identify their personal risk tolera
 
 **🚀 New to hackathons or building RiskWise?** Check out our comprehensive guides:
 
-- **[Complete Hackathon Execution Plan](docs/plan.md)** - Full 24-48 hour plan with timelines, milestones, and team roles
+### Quick Access
+- **[⚡ Quick Start Guide](docs/QUICK_START.md)** - Get up to speed in 5 minutes!
+- **[📖 Complete Hackathon Plan](docs/plan.md)** - Your comprehensive playbook (830 lines of pure value)
+
+### What's Included
 - **Market Research** - Analysis of existing solutions, gaps, and India-focused statistics
+- **48-Hour Execution Timeline** - Hour-by-hour breakdown with milestones and team roles
 - **MVP Definition** - Essential features and stretch goals clearly defined
-- **Tech Stack Options** - 3 curated options with pros/cons
-- **Pitch Deck Outline** - Complete slide-by-slide breakdown
-- **Beginner Tips** - Practical advice on winning hackathons
+- **Tech Stack Options** - 3 curated options with detailed pros/cons comparison
+- **Pitch Deck Outline** - Complete 12-slide breakdown with timing and talking points
+- **Beginner Tips** - Practical advice on winning hackathons, presentation skills, and Q&A handling
 
 ## 🌟 Problem Statement
 
